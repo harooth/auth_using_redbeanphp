@@ -9,7 +9,7 @@
 	<br>
 	<a href="exit.php">Logout</a>
 <?php  
-else:
-	echo 'You are not logged in!';
-endif;
+	else:
 ?>
+<p>You are not logged in!<br><a href="signin.php">Signin</a> or <a href="signup.php">Register</a></p>
+<?php endif; ?>
