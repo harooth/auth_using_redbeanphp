@@ -50,7 +50,7 @@
 			$user->email = $data['email'];
 			$user->password = password_hash($data['password'], PASSWORD_DEFAULT);
 			R::store($user);
-			$_SESSION['errors'] = "You registered successfully!";
+			$_SESSION['success'] = "You registered successfully!";
 			header("Location: signin.php");
 		}
 
@@ -59,7 +59,7 @@
 
 	if(isset($data['do_login'])) {
 		//skzbum stugum enq logini arkayutyuny
-		$user = R::findone('users', 'username = ?', array($data['username']));
+		$user = R::findone('users', 'username = ? OR email = ?', array($data['username'], $data['username']));
 		if($user){
 			//..heto stugum enq passwordi arkayutyuny
 			if(password_verify($data['password'], $user->password)){

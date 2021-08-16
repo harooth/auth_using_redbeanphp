@@ -1,58 +1,93 @@
 *{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Montserrat, sans-serif;
 }
-
-body{
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-family: Montserrat, sans-serif;
-}
-
-a{
-	color: #7c9ab7;
-	font-weight: bold;
-	text-decoration: none;
-}
-
-p{
-	margin: 10px 0;
-}
-
 form{
-	display: flex;
-	flex-direction: column;
-	width: 400px;
+    display: flex;
+    flex-direction: column;
 }
-
 input{
-	margin-bottom: 15px;
-	margin-top: 3px;
-	padding: 10px;
-	/*border: unset;*/
-	border: 2px solid #e3e3e3;
-	outline: none;
+    font-size: 17px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 2px solid #e3e3e3;
+    outline: none;
 }
-
 button{
-	padding: 10px;
-	background: #e3e3e3;
-	border: unset;
-	cursor: pointer;
+    padding: 10px;
+    background: #2b96f1;
+    border: unset;
+    cursor: pointer;
+    color: white;
+    border-radius: 24px;
+    font-weight: 600;
+    font-size: 17px;
+}
+.link{
+    margin: 10px 0;
+    font-size: 20px;
 }
 
-div{
-	border: 2px solid #ffa908;
-	border-radius: 3px;
-	padding: 10px;
-	text-align: center;
-	font-weight: bold;
+h2{
+    margin-bottom: 10px;
 }
 
-.logout {
-	color: #b7625c;
-	margin: 10px 0;
+.error, .success{
+    border: 3px solid red; /* #ffa908*/
+    border-radius: 3px;
+    padding: 10px;
+    align-items: center;
+    font-weight: bold;
+    color: red;
+    display: flex;
+    justify-content: center;
 }
+
+.success{
+    color: green;
+    border: 3px solid green;
+}
+
+.icon{
+    font-size: 30px;
+}
+
+
+/*hide webhost logo*/
+img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {
+    display:none !important;
+}
+
+@media screen and (max-width: 600px){
+    input, button{
+        font-size: 14px;
+    }
+    .container{
+        width: 90%;
+    }
+    .main{
+        height: 92vh !important;
+    }
+}
+
+
+.main{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-270deg,#27acbd,#3ea1f0,#2962ff);
+}
+
+.container{
+    border: 2px solid black;
+    padding: 20px;
+    padding-top: 100px;
+    border-radius: 20px;
+    background: rgba(255,255,255,.85);
+}
+
+

@@ -1,0 +1,8 @@
+Fixed errors:
+	Adaptive design for mobile phones - (+);
+	Errors and successes were the same color-fixed (+);
+	Login with username and email the same time (+);
+	Use avatar in the register page - no;
+	Update information in profile - no;
+	Use error logo and success logo in messages - (+);
+	Real-time errors (-)
