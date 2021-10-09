@@ -14,6 +14,7 @@
 		'email' => $data['email']
 	];
 
+
 	if(isset($data['do_signup'])){
 		//check
 		if(trim($data['username']) == ''){
@@ -41,7 +42,7 @@
 		}
 		//stugum enq error ka te che, ete che grancum enq
 		if(isset($_SESSION['errors'])){
-			header("Location: signup.php");
+			header("Location: signup.php"); //stex error ka :xD
 		} 
 		else{
 			//good, register
@@ -49,36 +50,61 @@
 			$user->username = $data['username'];
 			$user->email = $data['email'];
 			$user->password = password_hash($data['password'], PASSWORD_DEFAULT);
+			$user->email_verified = 0;
 			R::store($user);
-			$_SESSION['success'] = "You registered successfully!";
-			header("Location: signin.php");
+
+
+			$code = mt_rand(1111,9999);
+
+			$_SESSION['temp_user'] = [
+					"email" => $user->email,
+					"code" => $code
+				];
+
+			header("Location: confirm.php");
 		}
 
 	}
 
-
-	if(isset($data['do_login'])) {
+	if(isset($data['do_login']))
+	{
 		//skzbum stugum enq logini arkayutyuny
 		$user = R::findone('users', 'username = ? OR email = ?', array($data['username'], $data['username']));
-		if($user){
+		if($user)
+		{
 			//..heto stugum enq passwordi arkayutyuny
-			if(password_verify($data['password'], $user->password)){
-				$_SESSION['user'] = [
-					"username" => $user->username,
-					"email" => $user->email
-				];
-				header("Location: index.php");
-			} else{
+			if(password_verify($data['password'], $user->password))
+			{
+				if($user->email_verified == 0)
+				{
+					$code = mt_rand(1111,9999);
+
+					$_SESSION['temp_user'] = [
+					"email" => $user->email,
+					"code" => $code
+						];
+
+					header("Location: confirm.php");
+				}
+				else
+				{
+					$_SESSION['user'] = [
+						"username" => $user->username,
+						"email" => $user->email
+					];
+					header("Location: index.php");
+				}
+				
+			}
+			else
+			{
 				$_SESSION['errors'] = "Wrong password!";
 			}
-		} else {
+		}
+		else 
+		{
 			$_SESSION['errors'] = "Username doesn't exist!";
 		}
-
-
-
-
-
 	}
 
 
