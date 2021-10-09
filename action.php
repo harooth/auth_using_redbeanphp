@@ -14,7 +14,6 @@
 		'email' => $data['email']
 	];
 
-
 	if(isset($data['do_signup'])){
 		//check
 		if(trim($data['username']) == ''){
@@ -34,11 +33,11 @@
 		}
 
 		if(R::count("users", "username = ?", array($data['username'])) > 0){
-			$_SESSION['errors'] = "This username is already exists!";
+			$_SESSION['errors'] = "This username already exists!";
 		}
 
 		if(R::count("users", "email = ?", array($data['email'])) > 0){
-			$_SESSION['errors'] = "This email is already exists!";
+			$_SESSION['errors'] = "This email already exists!";
 		}
 		//stugum enq error ka te che, ete che grancum enq
 		if(isset($_SESSION['errors'])){
@@ -65,6 +64,11 @@
 					"code" => $code
 				];
 
+			$to = $data['email'];
+			$subject = "Verification code";
+			$message = $code;
+			mail($to, $subject, $message);
+
 			header("Location: confirm.php");
 		}
 
@@ -87,6 +91,11 @@
 					"email" => $user->email,
 					"code" => $code
 						];
+
+					$to = $user->email;
+					$subject = "Verification code";
+					$message = $code;
+					mail($to, $subject, $message);
 
 					header("Location: confirm.php");
 				}

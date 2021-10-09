@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="css/style.css">
 <?php
 require "db.php";
 
@@ -34,7 +35,7 @@ else
 	header("Location: index.php")
 ?>
 
-<form action="confirm.php" method="post">
+<form action="confirm.php" method="post" style="width: 200px;">
 	<input type="text" name="input_confirm_email">
 	<button type="submit" name="button_confirm_email">Submit</button>
 </form>
