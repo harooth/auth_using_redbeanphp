@@ -18,7 +18,7 @@
 <body>
 	<div class="main">
 	<div class="container">
-	<form action="action.php" method="post">
+	<form action="action.php" method="post" enctype="multipart/form-data">
 		<h2>Register</h2>
 		<input type="text" name="username" value="<?= @$_SESSION['old']['username']; ?>" placeholder="Enter your username">
 
@@ -27,6 +27,8 @@
 		<input type="password" name="password" placeholder="Your password">
 
 		<input type="password" name="password_2" placeholder="Confirm password">
+
+		<input type="file" name="avatar" placeholder="Avatar">
 
 		<button type="submit" name="do_signup">Register</button>
 

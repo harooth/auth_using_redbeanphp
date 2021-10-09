@@ -46,13 +46,17 @@
 		} 
 		else{
 			//good, register
+			$path = 'uploads/'. time() . $_FILES['avatar']['name'];
+			if(!move_uploaded_file($_FILES['avatar']['tmp_name'], $path)) {
+				$path = 'uploads/default.png';
+			}
 			$user = R::dispense('users');
 			$user->username = $data['username'];
 			$user->email = $data['email'];
+			$user->avatar = $path;
 			$user->password = password_hash($data['password'], PASSWORD_DEFAULT);
 			$user->email_verified = 0;
 			R::store($user);
-
 
 			$code = mt_rand(1111,9999);
 
@@ -90,7 +94,8 @@
 				{
 					$_SESSION['user'] = [
 						"username" => $user->username,
-						"email" => $user->email
+						"email" => $user->email,
+						"avatar" => $user->avatar
 					];
 					header("Location: index.php");
 				}
