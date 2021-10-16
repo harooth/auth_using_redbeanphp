@@ -1,8 +1,18 @@
 Fixed errors:
-	Adaptive design for mobile phones - (+);
+	Adaptive design for mobile phones (+);
 	Errors and successes were the same color-fixed (+);
 	Login with username and email the same time (+);
 	Use avatar in the register page - no;
 	Update information in profile - no;
 	Use error logo and success logo in messages - (+);
 	Real-time errors (-)
+	Design (-)
+
+
+
+Other notes:
+	I switched server from xamp to openserver, because xamp doesnt support sending emails. I did it via smtp of openserver. 
+	I changed the password of webhost (you can find it in db.php file), and droped the table (idk why, sometimes it does not work correctly).
+	Now sending emails work correctly both localhost and webserver(000webhost).
+	This version (16.10.2021) works stable on webserver and localhost, so I name it 1.0 .
+	I need to work on design and some features, but now it works stable.

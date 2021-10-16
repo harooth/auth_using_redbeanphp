@@ -1,22 +1,21 @@
-<link rel="stylesheet" href="css/style.css">
 <?php
 require "db.php";
 
 $data = $_POST;
 
+//temp_user - en userna, ov vor petqa verifikacia ancni
 if(isset($_SESSION["temp_user"]["code"]))
 {
-	echo $_SESSION["temp_user"]["code"];
+	// echo $_SESSION["temp_user"]["code"];
 
 	if(isset($data['button_confirm_email']))
 	{
 		if($data['input_confirm_email'] == $_SESSION["temp_user"]["code"])
 		{
-			echo "ok";
-			
 			$user = R::findone('users', 'email = ?', array($_SESSION['temp_user']['email']));
 			$user->email_verified = "1";
 			R::store($user);
+			unset($_SESSION['temp_user']);
 			$_SESSION['user'] = [
 						"username" => $user->username,
 						"email" => $user->email,
@@ -24,7 +23,6 @@ if(isset($_SESSION["temp_user"]["code"]))
 					];
 			unset($_SESSION['temp_user']);
 			header("Location: signin.php");
-
 		}
 		
 		else

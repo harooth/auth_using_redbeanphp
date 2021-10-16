@@ -1,5 +1,6 @@
 <?php 
 	require "db.php";
+	require_once "mail/references.php";
 	
 	if (isset($_SESSION['user'])) {
 		header("Location: index.php");
@@ -64,10 +65,10 @@
 					"code" => $code
 				];
 
-			$to = $data['email'];
-			$subject = "Verification code";
-			$message = $code;
-			mail($to, $subject, $message);
+
+			$mail->addAddress($user->email);
+			$mail->Body    = $code;
+			$mail->send();
 
 			header("Location: confirm.php");
 		}
@@ -92,10 +93,9 @@
 					"code" => $code
 						];
 
-					$to = $user->email;
-					$subject = "Verification code";
-					$message = $code;
-					mail($to, $subject, $message);
+					$mail->addAddress($user->email);
+					$mail->Body    = $code;
+					$mail->send();
 
 					header("Location: confirm.php");
 				}
