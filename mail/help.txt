@@ -1,0 +1,53 @@
+For clean-working smtp system, there are some solutions:
+
+smtp working schemas:
+1.gmail smtp(smtp.gmail.com 587 arodavo5@gmail.com arodavo5@gmail.com armengago tls) + pure sending email
+2.1 mail.ru smtp(smtp.mail.ru 587 nortest17@mail.ru nortest@mail.ru hxc13Ua9Y9iYsQrVDyJG tls) + pure sending email
+2.2 mail.ru + phpmailer(nerqevy ka kody)
+
+On webserver:
+	You need to use 2.2 schema, if there will be issues, you need to create a new mail.ru mailbox, try it in localhost, 
+	and if it will work correctly, you can try it on webserver.
+
+
+<?php
+	//Version with phpmailer
+	// require_once('phpmailer/PHPMailerAutoload.php');
+	// 	$mail = new PHPMailer;
+
+	// 	$mail->isSMTP();
+	// 	$mail->Host = 'smtp.mail.ru';
+
+	// 	$mail->SMTPAuth = true;
+	// 	$mail->Username = 'nortest17@mail.ru';
+	// 	$mail->Password = 'hxc13Ua9Y9iYsQrVDyJG';
+	// 	$mail->SMTPSecure = 'tls';
+	// 	$mail->Port = 587;
+
+	// 	$mail->setFrom('nortest17@mail.ru');
+
+	// 	$mail->Subject = 'Confirm';
+
+	// 	$mail->addAddress("redunita@thichanthit.com");
+	// 	$mail->Body    = time();
+	// 	if($mail->send())
+	// 	{
+	// 		echo "ok";
+	// 	}
+	// 	else echo "error";
+
+		//Default php mail
+		$to = "redunita@thichanthit.com";
+		$from = "hello@gmail.com";
+		$message = "narinj";
+
+		if(mail($to, $subject, $message))
+		{
+			echo("ok");
+		}
+		else
+		{
+			echo "error";	
+		}
+?>
+

@@ -1,12 +1,20 @@
 Fixed errors:
-	Adaptive design for mobile phones (+);
+	Adaptive design for mobile devices (+);
 	Errors and successes were the same color-fixed (+);
 	Login with username and email the same time (+);
-	Use avatar in the register page - no;
-	Update information in profile - no;
-	Use error logo and success logo in messages - (+);
+	Use avatar in the register page (+);
+	Update information in profile (-);
+	Use error logo and success logo in messages (+);
+	Sending email (+) //09.11.2021
 	Real-time errors (-)
+	Login with gmail, facebook etc. (-)
 	Design (-)
+		Dark theme (not required) (-)
+	Google recaptcha (-)
+	Save the verification code in db (-)
+
+Fonts I like:
+	Montserat
 
 
 
@@ -16,3 +24,10 @@ Other notes:
 	Now sending emails work correctly both localhost and webserver(000webhost).
 	This version (16.10.2021) works stable on webserver and localhost, so I name it 1.0 .
 	I need to work on design and some features, but now it works stable.
+
+31.10
+	At the begining the verification code for email verification was generated and sent in form by redirecting itself with action='/', then I changed that logic, and now that process is implemented by Session. That is not the best solution, so I plan to save the  code in encrypted view in database, and then check it with the form's one.
+06.11
+	I had to change the name of signin.php to login.php, cause Google Chrome gave me a privacy security error, when I try to visit ...host.com/signin.php. It fixed by changing filename. I also changed it in every file((
+09.11
+	I finally fixed issues with sending emails(hope). If it won't work again, take a look of "mail/help.txt" file.
